@@ -1,0 +1,8 @@
+1,com.funny.blood.modules.base.verify.Login$Request
+2,com.funny.blood.modules.base.verify.Login$Response
+3,com.funny.blood.modules.base.verify.Login$Error
+4,com.funny.blood.modules.base.verify.VersionCheck$Request
+5,com.funny.blood.modules.base.verify.VersionCheck$Response
+6,com.funny.blood.modules.base.verify.VersionCheck$Error
+7,com.funny.blood.modules.poker.ddz.Test1$Request
+8,com.funny.blood.modules.poker.zjh.Test2$Request
