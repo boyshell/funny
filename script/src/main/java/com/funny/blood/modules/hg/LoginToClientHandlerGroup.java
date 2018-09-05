@@ -10,8 +10,6 @@ public class LoginToClientHandlerGroup {
   @Inject
   public LoginToClientHandlerGroup(Injector injector) {
     ImmutableMap.Builder<Integer, com.funny.blood.modules.handler.LoginToClientHandler> builder = ImmutableMap.builder();
-    builder.put(2, injector.getInstance(com.funny.blood.modules.base.verify.LoginResponseHandler.class));
-    builder.put(3, injector.getInstance(com.funny.blood.modules.base.verify.LoginErrorHandler.class));
     this.handlers = builder.build();
   }
 

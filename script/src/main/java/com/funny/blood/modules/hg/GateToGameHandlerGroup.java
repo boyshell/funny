@@ -10,6 +10,7 @@ public class GateToGameHandlerGroup {
   @Inject
   public GateToGameHandlerGroup(Injector injector) {
     ImmutableMap.Builder<Integer, com.funny.blood.modules.handler.GateToGameHandler> builder = ImmutableMap.builder();
+    builder.put(10, injector.getInstance(com.funny.blood.modules.base.net.ForwardGateToGameRequestHandler.class));
     this.handlers = builder.build();
   }
 

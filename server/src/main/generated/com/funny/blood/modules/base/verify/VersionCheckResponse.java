@@ -12,6 +12,13 @@ import static shell.net.Message.NodeType.CLIENT;
 
 /** 版本验证 */
 public class VersionCheckResponse implements Message {
+  public VersionCheckResponse() {}
+
+  public VersionCheckResponse(byte[] config, int configDataVersion) {
+    this.config = config;
+    this.configDataVersion = configDataVersion;
+  }
+
   /** 如果存在,则用该配置 */
   private byte[] config;
   /** 如果config为空,则根据该配置数据版本号去获取配置 */

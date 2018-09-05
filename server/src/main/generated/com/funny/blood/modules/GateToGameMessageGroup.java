@@ -10,6 +10,7 @@ public class GateToGameMessageGroup extends MessageFactory {
 
   public GateToGameMessageGroup() {
     ImmutableMap.Builder<Integer, Class<? extends Message>> builder = ImmutableMap.builder();
+    builder.put(10, com.funny.blood.modules.base.net.ForwardGateToGameRequest.class);
     messages = builder.build();
   }
 

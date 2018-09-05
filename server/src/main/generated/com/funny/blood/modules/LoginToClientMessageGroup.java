@@ -10,8 +10,6 @@ public class LoginToClientMessageGroup extends MessageFactory {
 
   public LoginToClientMessageGroup() {
     ImmutableMap.Builder<Integer, Class<? extends Message>> builder = ImmutableMap.builder();
-    builder.put(2, com.funny.blood.modules.base.verify.LoginResponse.class);
-    builder.put(3, com.funny.blood.modules.base.verify.LoginError.class);
     messages = builder.build();
   }
 

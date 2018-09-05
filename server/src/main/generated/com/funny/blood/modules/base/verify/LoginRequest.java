@@ -8,37 +8,27 @@ import shell.nio.ByteBufUtil;
 import javax.annotation.Nullable;
 
 import static shell.net.Message.NodeType.CLIENT;
-import static shell.net.Message.NodeType.LOGIN;
+import static shell.net.Message.NodeType.GATE;
 
 /** 登录 */
 public class LoginRequest implements Message {
-  /** 服务器 */
-  private short server;
+  public LoginRequest() {}
+
+  public LoginRequest(String account, int timestamp, String md5, long time) {
+    this.account = account;
+    this.timestamp = timestamp;
+    this.md5 = md5;
+    this.time = time;
+  }
+
   /** 帐号 */
   private String account;
-  /** 是否成年 */
-  private boolean adult;
   /** 时间戳 */
   private int timestamp;
   /** MD5 */
   private String md5;
-  /** 显示器宽(像素) */
-  private short screenWidth;
-  /** 显示器高(像素) */
-  private short screenHeight;
   /** 前端unix时间戳 */
   private long time;
-
-  /** 服务器 */
-  public LoginRequest setServer(short server) {
-    this.server = server;
-    return this;
-  }
-
-  /** 服务器 */
-  public short getServer() {
-    return this.server;
-  }
 
   /** 帐号 */
   public LoginRequest setAccount(String account) {
@@ -49,17 +39,6 @@ public class LoginRequest implements Message {
   /** 帐号 */
   public String getAccount() {
     return this.account;
-  }
-
-  /** 是否成年 */
-  public LoginRequest setAdult(boolean adult) {
-    this.adult = adult;
-    return this;
-  }
-
-  /** 是否成年 */
-  public boolean getAdult() {
-    return this.adult;
   }
 
   /** 时间戳 */
@@ -84,28 +63,6 @@ public class LoginRequest implements Message {
     return this.md5;
   }
 
-  /** 显示器宽(像素) */
-  public LoginRequest setScreenWidth(short screenWidth) {
-    this.screenWidth = screenWidth;
-    return this;
-  }
-
-  /** 显示器宽(像素) */
-  public short getScreenWidth() {
-    return this.screenWidth;
-  }
-
-  /** 显示器高(像素) */
-  public LoginRequest setScreenHeight(short screenHeight) {
-    this.screenHeight = screenHeight;
-    return this;
-  }
-
-  /** 显示器高(像素) */
-  public short getScreenHeight() {
-    return this.screenHeight;
-  }
-
   /** 前端unix时间戳 */
   public LoginRequest setTime(long time) {
     this.time = time;
@@ -119,26 +76,18 @@ public class LoginRequest implements Message {
 
   @Override
   public void write(ByteBuf buf) {
-    ByteBufUtil.writeShort(buf, this.server);
     ByteBufUtil.writeString(buf, this.account);
-    ByteBufUtil.writeBoolean(buf, this.adult);
     ByteBufUtil.writeInt(buf, this.timestamp);
     ByteBufUtil.writeString(buf, this.md5);
-    ByteBufUtil.writeShort(buf, this.screenWidth);
-    ByteBufUtil.writeShort(buf, this.screenHeight);
     ByteBufUtil.writeLong(buf, this.time);
   }
 
   @Override
   public LoginRequest read(ByteBuf buf) {
     int size52413035;
-    this.server = ByteBufUtil.readShort(buf);
     this.account = ByteBufUtil.readString(buf);
-    this.adult = ByteBufUtil.readBoolean(buf);
     this.timestamp = ByteBufUtil.readInt(buf);
     this.md5 = ByteBufUtil.readString(buf);
-    this.screenWidth = ByteBufUtil.readShort(buf);
-    this.screenHeight = ByteBufUtil.readShort(buf);
     this.time = ByteBufUtil.readLong(buf);
     return this;
   }
@@ -155,7 +104,7 @@ public class LoginRequest implements Message {
 
   @Override
   public NodeType to() {
-    return LOGIN;
+    return GATE;
   }
 
   @Nullable

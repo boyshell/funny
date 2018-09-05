@@ -12,6 +12,13 @@ import static shell.net.Message.NodeType.GATE;
 
 /** 版本验证 */
 public class VersionCheckRequest implements Message {
+  public VersionCheckRequest() {}
+
+  public VersionCheckRequest(String messageCodeVersion, String configCodeVersion) {
+    this.messageCodeVersion = messageCodeVersion;
+    this.configCodeVersion = configCodeVersion;
+  }
+
   /** 消息代码版本号 */
   private String messageCodeVersion;
   /** 配置代码版本号 */

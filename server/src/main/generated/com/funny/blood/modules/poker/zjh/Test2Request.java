@@ -12,6 +12,19 @@ import static shell.net.Message.NodeType.CLIENT;
 
 /** 测试 */
 public class Test2Request implements Message {
+  public Test2Request() {}
+
+  public Test2Request(short server, String account, boolean adult, int timestamp, String md5, short screenWidth, short screenHeight, long time) {
+    this.server = server;
+    this.account = account;
+    this.adult = adult;
+    this.timestamp = timestamp;
+    this.md5 = md5;
+    this.screenWidth = screenWidth;
+    this.screenHeight = screenHeight;
+    this.time = time;
+  }
+
   /** 服务器 */
   private short server;
   /** 帐号 */

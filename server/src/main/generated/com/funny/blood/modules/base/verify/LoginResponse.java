@@ -7,11 +7,19 @@ import shell.nio.ByteBufUtil;
 
 import javax.annotation.Nullable;
 
-import static shell.net.Message.NodeType.LOGIN;
+import static shell.net.Message.NodeType.GATE;
 import static shell.net.Message.NodeType.CLIENT;
 
 /** 登录 */
 public class LoginResponse implements Message {
+  public LoginResponse() {}
+
+  public LoginResponse(long userID, long ctime, long stime) {
+    this.userID = userID;
+    this.ctime = ctime;
+    this.stime = stime;
+  }
+
   /** 账号ID */
   private long userID;
   /** 前端unix时间戳 */
@@ -75,7 +83,7 @@ public class LoginResponse implements Message {
 
   @Override
   public NodeType from() {
-    return LOGIN;
+    return GATE;
   }
 
   @Override

@@ -1,6 +1,5 @@
 package com.funny.blood.modules.base.verify;
 
-import com.funny.blood.modules.handler.LoginToClientHandler;
+import com.funny.blood.modules.handler.GateToClientHandler;
 
-public class LoginResponseHandler implements LoginToClientHandler<LoginResponse> {
-}
+public class LoginResponseHandler implements GateToClientHandler<LoginResponse> {}

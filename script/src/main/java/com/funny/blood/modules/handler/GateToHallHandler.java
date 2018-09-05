@@ -1,4 +1,5 @@
 package com.funny.blood.modules.handler;
 
-public interface GateToHallHandler {
-}
+import shell.net.Message;
+
+public interface GateToHallHandler<T extends Message> {}

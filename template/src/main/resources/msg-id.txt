@@ -6,3 +6,11 @@
 6,com.funny.blood.modules.base.verify.VersionCheck$Error
 7,com.funny.blood.modules.poker.ddz.Test1$Request
 8,com.funny.blood.modules.poker.zjh.Test2$Request
+9,com.funny.blood.modules.base.net.Kick$Request
+10,com.funny.blood.modules.base.net.ForwardGateToGame$Request
+11,com.funny.blood.modules.base.net.ForwardGateToHall$Request
+12,com.funny.blood.modules.base.net.ForwardGateToLogin$Request
+13,com.funny.blood.modules.base.verify.Login0$Request
+14,com.funny.blood.modules.base.net.ForwardLoginToGate$Request
+15,com.funny.blood.modules.base.net.AddClientUserInLogin$Request
+16,com.funny.blood.modules.base.net.RemoveClientUserInLogin$Request
