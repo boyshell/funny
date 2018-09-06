@@ -11,7 +11,7 @@ public class GameToClientHandlerGroup {
   public GameToClientHandlerGroup(Injector injector) {
     ImmutableMap.Builder<Integer, com.funny.blood.modules.handler.GameToClientHandler> builder = ImmutableMap.builder();
     builder.put(7, injector.getInstance(com.funny.blood.modules.poker.ddz.Test1RequestHandler.class));
-    builder.put(8, injector.getInstance(com.funny.blood.modules.poker.zjh.Test2RequestHandler.class));
+    builder.put(18, injector.getInstance(com.funny.blood.modules.poker.zjh.ZJHDealRequestHandler.class));
     this.handlers = builder.build();
   }
 

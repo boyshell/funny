@@ -1,8 +1,6 @@
 package com.funny.blood.net.login;
 
 import com.funny.blood.modules.base.net.ForwardLoginToGateRequest;
-import com.funny.blood.modules.base.net.KickRequest;
-import com.funny.blood.modules.base.net.KickType;
 import com.funny.blood.modules.user.login.User;
 import com.funny.blood.net.CommonChannel;
 import io.netty.channel.Channel;
@@ -58,10 +56,5 @@ public class ClientToLoginUser extends CommonChannel implements IUser {
 
   public WeakReference<User> getUserRef() {
     return userRef;
-  }
-
-  @Override
-  public void onClose() {
-    closeAndForward(new KickRequest(KickType.REPLACE), "顶号");
   }
 }

@@ -40,7 +40,4 @@ public class GateToLoginUser extends CommonChannel implements IUser {
   public boolean closeAndForward(String channelID, byte[] msg, String because) {
     return write(new ForwardLoginToGateRequest(channelID, because, msg));
   }
-
-  @Override
-  public void onClose() {}
 }

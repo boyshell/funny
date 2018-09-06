@@ -14,3 +14,6 @@
 14,com.funny.blood.modules.base.net.ForwardLoginToGate$Request
 15,com.funny.blood.modules.base.net.AddClientUserInLogin$Request
 16,com.funny.blood.modules.base.net.RemoveClientUserInLogin$Request
+17,com.funny.blood.modules.base.verify.Login0$Response
+18,com.funny.blood.modules.poker.zjh.ZJHDeal$Request
+19,com.funny.blood.modules.base.verify.LockUser$Request

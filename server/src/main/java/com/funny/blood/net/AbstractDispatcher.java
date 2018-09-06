@@ -7,6 +7,8 @@ import shell.net.Message;
 import shell.net.MessageHandler;
 
 import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.Consumer;
 
 public abstract class AbstractDispatcher extends MessageHandler {
   public AbstractDispatcher(String name, @Nullable Factory<Governor> governorFactory) {
@@ -46,4 +48,12 @@ public abstract class AbstractDispatcher extends MessageHandler {
   }
 
   protected abstract IDispatcherScript script();
+
+  public void foreachChannel(Consumer<Channel> action) {
+    Set<Channel> channels = localChannels().get();
+    if (channels == null) {
+      return;
+    }
+    channels.forEach(action);
+  }
 }

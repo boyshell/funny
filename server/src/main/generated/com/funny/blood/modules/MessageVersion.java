@@ -1,5 +1,5 @@
 package com.funny.blood.modules;
 
 public interface MessageVersion {
-  String VERSION = "595d5110e3a40e9b3b812b15dbbd7c42";
+  String VERSION = "3a1a0671a475e2abc1d64ae3750cf14f";
 }

@@ -17,7 +17,8 @@ public class ClientToGateDispatcher extends AbstractDispatcher {
   private final GateScript gateScript;
 
   private static final ThreadLocal<Set<Channel>> localChannels = new ThreadLocal<>();
-  private final Map<String, ClientToGateUser> channels = new ConcurrentHashMap<>();
+
+
 
   @Inject
   public ClientToGateDispatcher(GateScript gateScript) {
@@ -35,7 +36,4 @@ public class ClientToGateDispatcher extends AbstractDispatcher {
     return localChannels;
   }
 
-  public Map<String, ClientToGateUser> getChannels() {
-    return channels;
-  }
 }

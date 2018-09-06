@@ -12,15 +12,13 @@ public class ScriptMain extends Main {
 
   @Override
   public void start(CmdParams params) throws Exception {
-    for (ProcessType type : ProcessType.values()) {
-      if (type.key.equals(params.getMode())) {
-        Injector injector = type.createInjector();
-        injector.getInstance(ILauncher.class).launch();
-        injector.getInstance(ILauncher.class).registerScript();
-        injector.getInstance(AbstractShutdownHooks.class).init();
-        return;
-      }
+    ProcessType type = ProcessType.valueOf(params.getMode());
+    if (type == null) {
+      throw new UnsupportedOperationException("不支持的模式:" + params.getMode());
     }
-    throw new UnsupportedOperationException("不支持的模式:" + params.getMode());
+    Injector injector = type.createInjector();
+    injector.getInstance(ILauncher.class).registerScript();
+    injector.getInstance(ILauncher.class).launch();
+    injector.getInstance(AbstractShutdownHooks.class).init();
   }
 }

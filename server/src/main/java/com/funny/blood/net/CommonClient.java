@@ -5,9 +5,7 @@ import org.slf4j.LoggerFactory;
 import shell.misc.Factory;
 import shell.net.*;
 
-import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
 
 public class CommonClient extends TcpClient {
   private static final Logger logger = LoggerFactory.getLogger(CommonClient.class);
@@ -23,24 +21,10 @@ public class CommonClient extends TcpClient {
       Factory<MessageToByteHandler> encoderFactory,
       String host,
       int port)
-      throws InterruptedException {
+      throws Exception {
     super(name, workerNum, messageHandler, threadFactory, decoderFactory, encoderFactory);
 
-    Executors.newSingleThreadScheduledExecutor()
-        .scheduleWithFixedDelay(
-            () -> {
-              if (channel != null && channel.getChannel().isActive()) {
-                return;
-              }
-              try {
-                channel = new CommonChannel(connect(host, port));
-              } catch (Exception e) {
-                logger.error("", e);
-              }
-            },
-            0,
-            1,
-            TimeUnit.SECONDS);
+    channel = new CommonChannel(connect(host, port));
   }
 
   public boolean write(Message message) {

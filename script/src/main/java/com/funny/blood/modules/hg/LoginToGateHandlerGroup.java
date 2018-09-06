@@ -11,6 +11,7 @@ public class LoginToGateHandlerGroup {
   public LoginToGateHandlerGroup(Injector injector) {
     ImmutableMap.Builder<Integer, com.funny.blood.modules.handler.LoginToGateHandler> builder = ImmutableMap.builder();
     builder.put(14, injector.getInstance(com.funny.blood.modules.base.net.ForwardLoginToGateRequestHandler.class));
+    builder.put(19, injector.getInstance(com.funny.blood.modules.base.verify.LockUserRequestHandler.class));
     this.handlers = builder.build();
   }
 

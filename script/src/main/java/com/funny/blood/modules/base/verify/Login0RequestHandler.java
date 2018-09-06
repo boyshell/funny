@@ -5,6 +5,7 @@ import com.funny.blood.modules.handler.GateToLoginHandler;
 import com.funny.blood.modules.user.login.User;
 import com.funny.blood.net.login.ClientToLoginUser;
 import com.funny.blood.net.login.GateToLoginUser;
+import com.funny.blood.net.login.LoginServer;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,10 +17,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Login0RequestHandler implements GateToLoginHandler<Login0Request> {
   private static final Logger logger = LoggerFactory.getLogger(Login0RequestHandler.class);
   private final UserModule userModule;
+  private final LoginServer loginServer;
 
   @Inject
-  public Login0RequestHandler(UserModule userModule) {
+  public Login0RequestHandler(UserModule userModule, LoginServer loginServer) {
     this.userModule = userModule;
+    this.loginServer = loginServer;
   }
 
   @Override
@@ -55,10 +58,10 @@ public class Login0RequestHandler implements GateToLoginHandler<Login0Request> {
         .tryOpen(
             clientUser,
             () -> {
-              // todo 需要告知之前的端，我被断开了，不然会存在内存泄漏
-              // todo 为了稳妥起见，clientUser也加一个超时处理
+              // todo 避免内存泄漏，clientUser也加一个超时处理?
               finalClientUser.forward(
                   new LoginResponse(finalUser.getId(), message.getTime(), TimeUtil.millis()));
+              loginServer.broadcast(new LockUserRequest(message.getChannelID(), finalUser.getId()));
             },
             () -> logger.error("can not get the door!", finalUser));
   }

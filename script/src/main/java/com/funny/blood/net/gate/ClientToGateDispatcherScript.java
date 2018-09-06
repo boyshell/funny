@@ -22,18 +22,18 @@ public class ClientToGateDispatcherScript implements IDispatcherScript {
   private final HallClient hallClient;
   private final LoginClient loginClient;
   private final ConfigDataSet configDataSet;
-  private final ClientToGateDispatcher dispatcher;
+  private final GateServer gateServer;
 
   @Inject
   public ClientToGateDispatcherScript(
       HallClient hallClient,
       LoginClient loginClient,
       ConfigDataSet configDataSet,
-      ClientToGateDispatcher dispatcher) {
+      GateServer gateServer) {
     this.hallClient = hallClient;
     this.loginClient = loginClient;
     this.configDataSet = configDataSet;
-    this.dispatcher = dispatcher;
+    this.gateServer = gateServer;
   }
 
   @Override
@@ -43,9 +43,10 @@ public class ClientToGateDispatcherScript implements IDispatcherScript {
 
   @Override
   public void onChannelActive(Channel channel) {
+    // 这里不要即时发送消息
     ClientToGateUser netUser = new ClientToGateUser(channel);
     channel.attr(ClientToGateUser.KEY).set(netUser);
-    if (dispatcher.getChannels().putIfAbsent(channel.id().asLongText(), netUser) != null) {
+    if (gateServer.getChannels().putIfAbsent(channel.id().asLongText(), netUser) != null) {
       logger.error("{}", channel, new NullPointerException());
     }
   }
@@ -55,7 +56,7 @@ public class ClientToGateDispatcherScript implements IDispatcherScript {
     channel.attr(ClientToGateUser.KEY).remove();
     String id = channel.id().asLongText();
     loginClient.write(new RemoveClientUserInLoginRequest(id));
-    if (dispatcher.getChannels().remove(id) == null) {
+    if (gateServer.getChannels().remove(id) == null) {
       logger.error("{}", channel, new NullPointerException());
     }
   }
@@ -94,9 +95,9 @@ public class ClientToGateDispatcherScript implements IDispatcherScript {
     }
     // 其他消息处理
     switch (message.to()) {
-      case LOGIN:
-        loginClient.forward(channel.id().asLongText(), message);
-        break;
+        //      case LOGIN:
+        //        loginClient.forward(channel.id().asLongText(), message);
+        //        break;
       case GAME:
         if (netUser.getGameClient() != null) {
           netUser.getGameClient().forward(channel.id().asLongText(), message);
@@ -122,6 +123,7 @@ public class ClientToGateDispatcherScript implements IDispatcherScript {
       netUser.write(VersionCheckError.MESSAGE_CODE);
       return;
     }
+    netUser.setVersionOK(true);
     if (configDataSet.getVersionMsg() != null) {
       netUser.write(configDataSet.getVersionMsg());
     } else {

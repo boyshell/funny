@@ -2,12 +2,17 @@ package com.funny.blood.cfg;
 
 import com.google.inject.Inject;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+
 public class ConfigDataSet {
   private volatile ConfigGroup configGroup;
   private volatile byte[] versionMsg;
 
   @Inject
-  public ConfigDataSet() {}
+  public ConfigDataSet(IConfigPath configPath) throws IOException {
+    configGroup = new ConfigGroup(new FileInputStream(configPath.cfgServerPath()));
+  }
 
   public void setConfigGroup(ConfigGroup configGroup) {
     this.configGroup = configGroup;

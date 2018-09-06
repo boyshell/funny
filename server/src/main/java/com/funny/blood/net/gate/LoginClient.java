@@ -17,7 +17,7 @@ public class LoginClient extends CommonClient {
       GateProperties properties,
       LoginToGateDispatcher dispatcher,
       LoginToGateMessageGroup messageGroup)
-      throws InterruptedException {
+      throws Exception {
     super(
         "gate-to-login-client",
         1,

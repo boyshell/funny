@@ -11,7 +11,7 @@ public class GameToClientMessageGroup extends MessageFactory {
   public GameToClientMessageGroup() {
     ImmutableMap.Builder<Integer, Class<? extends Message>> builder = ImmutableMap.builder();
     builder.put(7, com.funny.blood.modules.poker.ddz.Test1Request.class);
-    builder.put(8, com.funny.blood.modules.poker.zjh.Test2Request.class);
+    builder.put(18, com.funny.blood.modules.poker.zjh.ZJHDealRequest.class);
     messages = builder.build();
   }
 
