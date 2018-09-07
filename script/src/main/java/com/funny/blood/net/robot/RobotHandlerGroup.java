@@ -1,9 +1,9 @@
 package com.funny.blood.net.robot;
 
-import com.funny.blood.modules.hg.GameToClientHandlerGroup;
 import com.funny.blood.modules.hg.GateToClientHandlerGroup;
 import com.funny.blood.modules.hg.HallToClientHandlerGroup;
 import com.funny.blood.modules.hg.LoginToClientHandlerGroup;
+import com.funny.blood.modules.hg.RoomToClientHandlerGroup;
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Inject;
 
@@ -17,7 +17,7 @@ public class RobotHandlerGroup {
   public RobotHandlerGroup(
       GateToClientHandlerGroup gateToClientHandlerGroup,
       LoginToClientHandlerGroup loginToClientHandlerGroup,
-      GameToClientHandlerGroup gameToClientHandlerGroup,
+      RoomToClientHandlerGroup gameToClientHandlerGroup,
       HallToClientHandlerGroup hallToClientHandlerGroup) {
     Map<Integer, IRobotHandler> map = new HashMap<>();
     map.putAll(gateToClientHandlerGroup.handlers);

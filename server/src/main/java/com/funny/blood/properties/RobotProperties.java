@@ -1,13 +1,13 @@
 package com.funny.blood.properties;
 
-import com.funny.blood.cfg.IConfigPath;
+import com.funny.blood.cfg.IConfigProperties;
 import com.google.inject.Inject;
 import shell.io.FileUtil;
 import shell.io.Properties;
 
 import java.io.IOException;
 
-public class RobotProperties implements IConfigPath {
+public class RobotProperties implements IConfigProperties {
   public final String ROBOT_NAME;
   public final int ROBOT_NUM;
   public final String GATE_HOST;

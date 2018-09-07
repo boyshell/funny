@@ -1,9 +1,9 @@
 package com.funny.blood.modules.poker.zjh;
 
-import com.funny.blood.modules.handler.GameToClientHandler;
+import com.funny.blood.modules.handler.RoomToClientHandler;
 import com.funny.blood.net.robot.RobotUser;
 
-public class ZJHDealRequestHandler implements GameToClientHandler<ZJHDealRequest> {
+public class ZJHDealRequestHandler implements RoomToClientHandler<ZJHDealRequest> {
   @Override
   public void exec(RobotUser user, ZJHDealRequest message) {}
 }

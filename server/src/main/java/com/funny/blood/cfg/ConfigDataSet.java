@@ -10,7 +10,7 @@ public class ConfigDataSet {
   private volatile byte[] versionMsg;
 
   @Inject
-  public ConfigDataSet(IConfigPath configPath) throws IOException {
+  public ConfigDataSet(IConfigProperties configPath) throws IOException {
     configGroup = new ConfigGroup(new FileInputStream(configPath.cfgServerPath()));
   }
 

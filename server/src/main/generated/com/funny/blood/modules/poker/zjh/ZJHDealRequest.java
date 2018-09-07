@@ -7,7 +7,7 @@ import shell.nio.ByteBufUtil;
 
 import javax.annotation.Nullable;
 
-import static shell.net.Message.NodeType.GAME;
+import static shell.net.Message.NodeType.ROOM;
 import static shell.net.Message.NodeType.CLIENT;
 
 /** 炸金花发牌 */
@@ -58,7 +58,7 @@ public class ZJHDealRequest implements Message {
 
   @Override
   public NodeType from() {
-    return GAME;
+    return ROOM;
   }
 
   @Override

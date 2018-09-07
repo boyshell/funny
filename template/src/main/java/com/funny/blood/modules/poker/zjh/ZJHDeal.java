@@ -7,7 +7,7 @@ import shell.tool.message.MessageFieldAnnotation;
 
 import java.util.List;
 
-@MessageClassAnnotation(from = Message.NodeType.GAME, to = Message.NodeType.CLIENT, desc = "炸金花发牌")
+@MessageClassAnnotation(from = Message.NodeType.ROOM, to = Message.NodeType.CLIENT, desc = "炸金花发牌")
 public class ZJHDeal {
   static class Request {
     @MessageFieldAnnotation(desc = "牌")

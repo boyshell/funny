@@ -1,13 +1,13 @@
 package com.funny.blood.properties;
 
-import com.funny.blood.cfg.IConfigPath;
+import com.funny.blood.cfg.IConfigProperties;
 import com.google.inject.Inject;
 import shell.io.FileUtil;
 import shell.io.Properties;
 
 import java.io.IOException;
 
-public class GateProperties implements IConfigPath {
+public class GateProperties implements IConfigProperties {
   public final int PORT;
   public final String LOGIN_HOST;
   public final int LOGIN_PORT;

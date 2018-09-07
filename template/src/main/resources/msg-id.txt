@@ -7,7 +7,7 @@
 7,com.funny.blood.modules.poker.ddz.Test1$Request
 8,com.funny.blood.modules.poker.zjh.Test2$Request
 9,com.funny.blood.modules.base.net.Kick$Request
-10,com.funny.blood.modules.base.net.ForwardGateToGame$Request
+10,com.funny.blood.modules.base.net.ForwardGateToRoom$Request
 11,com.funny.blood.modules.base.net.ForwardGateToHall$Request
 12,com.funny.blood.modules.base.net.ForwardGateToLogin$Request
 13,com.funny.blood.modules.base.verify.Login0$Request

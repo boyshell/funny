@@ -15,7 +15,7 @@ public enum ProcessType {
           new RobotScriptGuiceModule(),
           new GateToClientGuiceModule(),
           new LoginToClientGuiceModule(),
-          new GameToClientGuiceModule(),
+          new RoomToClientGuiceModule(),
           new HallToClientGuiceModule());
     }
   },

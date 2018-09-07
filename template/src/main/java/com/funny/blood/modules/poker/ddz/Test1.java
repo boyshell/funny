@@ -4,7 +4,7 @@ import shell.net.Message;
 import shell.tool.message.MessageClassAnnotation;
 import shell.tool.message.MessageFieldAnnotation;
 
-@MessageClassAnnotation(from = Message.NodeType.GAME, to = Message.NodeType.CLIENT, desc = "测试")
+@MessageClassAnnotation(from = Message.NodeType.ROOM, to = Message.NodeType.CLIENT, desc = "测试")
 public class Test1 {
   static class Request {
     @MessageFieldAnnotation(desc = "服务器")

@@ -98,9 +98,9 @@ public class ClientToGateDispatcherScript implements IDispatcherScript {
         //      case LOGIN:
         //        loginClient.forward(channel.id().asLongText(), message);
         //        break;
-      case GAME:
-        if (netUser.getGameClient() != null) {
-          netUser.getGameClient().forward(channel.id().asLongText(), message);
+      case ROOM:
+        if (netUser.getRoomClient() != null) {
+          netUser.getRoomClient().forward(channel.id().asLongText(), message);
         } else {
           logger.warn("FORWARD ERROR:{}", message.getClass().getSimpleName());
         }

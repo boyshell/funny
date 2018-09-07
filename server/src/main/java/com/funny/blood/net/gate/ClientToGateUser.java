@@ -14,7 +14,7 @@ public class ClientToGateUser extends CommonChannel {
 
   private boolean versionOK = false;
   private int userID = Null.ID;
-  private GameClient gameClient;
+  private RoomClient roomClient;
 
   public ClientToGateUser(Channel channel) {
     super(channel);
@@ -36,12 +36,12 @@ public class ClientToGateUser extends CommonChannel {
     this.versionOK = versionOK;
   }
 
-  public GameClient getGameClient() {
-    return gameClient;
+  public RoomClient getRoomClient() {
+    return roomClient;
   }
 
-  public void setGameClient(GameClient gameClient) {
-    this.gameClient = gameClient;
+  public void setRoomClient(RoomClient roomClient) {
+    this.roomClient = roomClient;
   }
 
   public void disconnect(KickType type, String reason) {
