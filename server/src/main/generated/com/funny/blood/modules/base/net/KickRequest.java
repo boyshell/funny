@@ -45,6 +45,13 @@ public class KickRequest implements Message {
   }
 
   @Override
+  public String toString() {
+    return "KickRequest{" +
+           "type='" + type + '\'' +
+           '}';
+  }
+
+  @Override
   public int id() {
     return 9;
   }

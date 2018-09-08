@@ -53,4 +53,12 @@ public class CardBean implements Bean<CardBean> {
     this.rank = com.funny.blood.modules.poker.Rank.valueOf(ByteBufUtil.readInt(buf));
     return this;
   }
+
+  @Override
+  public String toString() {
+    return "CardBean{" +
+           "suit='" + suit + '\'' +
+           "rank='" + rank + '\'' +
+           '}';
+  }
 }

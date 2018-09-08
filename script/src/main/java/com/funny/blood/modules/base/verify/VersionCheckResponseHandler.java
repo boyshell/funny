@@ -4,7 +4,6 @@ import com.funny.blood.modules.handler.GateToClientHandler;
 import com.funny.blood.net.robot.RobotUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import shell.time.TimeUtil;
 
 public class VersionCheckResponseHandler implements GateToClientHandler<VersionCheckResponse> {
   private static final Logger logger = LoggerFactory.getLogger(VersionCheckResponseHandler.class);
@@ -12,6 +11,6 @@ public class VersionCheckResponseHandler implements GateToClientHandler<VersionC
   @Override
   public void exec(RobotUser user, VersionCheckResponse message) {
     logger.info("version check suc");
-    user.write(new LoginRequest(user.getUsername(), TimeUtil.seconds(), null, TimeUtil.millis()));
+    user.write(new LoginRequest(user.getUsername()));
   }
 }

@@ -1,5 +1,6 @@
 package com.funny.blood.modules.base.verify;
 
+import com.funny.blood.modules.base.hall.HallBean;
 import shell.net.Message;
 import shell.tool.message.MessageClassAnnotation;
 import shell.tool.message.MessageFieldAnnotation;
@@ -11,26 +12,11 @@ public class Login {
   static class Request {
     @MessageFieldAnnotation(desc = "帐号")
     String account;
-
-    @MessageFieldAnnotation(desc = "时间戳")
-    int timestamp;
-
-    @MessageFieldAnnotation(desc = "MD5")
-    String md5;
-
-    @MessageFieldAnnotation(desc = "前端unix时间戳")
-    long time;
   }
 
   static class Response {
-    @MessageFieldAnnotation(desc = "账号ID")
-    long userID;
-
-    @MessageFieldAnnotation(desc = "前端unix时间戳")
-    long ctime;
-
-    @MessageFieldAnnotation(desc = "后端unix时间戳")
-    long stime;
+    @MessageFieldAnnotation(desc = "大厅")
+    HallBean hall;
   }
 
   enum Error {

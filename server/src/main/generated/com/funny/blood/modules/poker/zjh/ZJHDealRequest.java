@@ -52,6 +52,13 @@ public class ZJHDealRequest implements Message {
   }
 
   @Override
+  public String toString() {
+    return "ZJHDealRequest{" +
+           "cards='" + cards + '\'' +
+           '}';
+  }
+
+  @Override
   public int id() {
     return 18;
   }

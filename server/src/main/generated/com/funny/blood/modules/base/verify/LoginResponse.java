@@ -14,66 +14,41 @@ import static shell.net.Message.NodeType.CLIENT;
 public class LoginResponse implements Message {
   public LoginResponse() {}
 
-  public LoginResponse(long userID, long ctime, long stime) {
-    this.userID = userID;
-    this.ctime = ctime;
-    this.stime = stime;
+  public LoginResponse(com.funny.blood.modules.base.hall.HallBean hall) {
+    this.hall = hall;
   }
 
-  /** 账号ID */
-  private long userID;
-  /** 前端unix时间戳 */
-  private long ctime;
-  /** 后端unix时间戳 */
-  private long stime;
+  /** 大厅 */
+  private com.funny.blood.modules.base.hall.HallBean hall;
 
-  /** 账号ID */
-  public LoginResponse setUserID(long userID) {
-    this.userID = userID;
+  /** 大厅 */
+  public LoginResponse setHall(com.funny.blood.modules.base.hall.HallBean hall) {
+    this.hall = hall;
     return this;
   }
 
-  /** 账号ID */
-  public long getUserID() {
-    return this.userID;
-  }
-
-  /** 前端unix时间戳 */
-  public LoginResponse setCtime(long ctime) {
-    this.ctime = ctime;
-    return this;
-  }
-
-  /** 前端unix时间戳 */
-  public long getCtime() {
-    return this.ctime;
-  }
-
-  /** 后端unix时间戳 */
-  public LoginResponse setStime(long stime) {
-    this.stime = stime;
-    return this;
-  }
-
-  /** 后端unix时间戳 */
-  public long getStime() {
-    return this.stime;
+  /** 大厅 */
+  public com.funny.blood.modules.base.hall.HallBean getHall() {
+    return this.hall;
   }
 
   @Override
   public void write(ByteBuf buf) {
-    ByteBufUtil.writeLong(buf, this.userID);
-    ByteBufUtil.writeLong(buf, this.ctime);
-    ByteBufUtil.writeLong(buf, this.stime);
+    ByteBufUtil.writeBean(buf, this.hall);
   }
 
   @Override
   public LoginResponse read(ByteBuf buf) {
     int size52413035;
-    this.userID = ByteBufUtil.readLong(buf);
-    this.ctime = ByteBufUtil.readLong(buf);
-    this.stime = ByteBufUtil.readLong(buf);
+    this.hall = ByteBufUtil.readBean(buf, com.funny.blood.modules.base.hall.HallBean.class);
     return this;
+  }
+
+  @Override
+  public String toString() {
+    return "LoginResponse{" +
+           "hall='" + hall + '\'' +
+           '}';
   }
 
   @Override

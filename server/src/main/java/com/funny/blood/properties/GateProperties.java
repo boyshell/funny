@@ -12,6 +12,8 @@ public class GateProperties implements IConfigProperties {
   public final String LOGIN_HOST;
   public final int LOGIN_PORT;
   public final String CFG_SERVER_PATH;
+  public final String HALL_HOST;
+  public final int HALL_PORT;
 
   @Inject
   public GateProperties() throws IOException {
@@ -21,6 +23,8 @@ public class GateProperties implements IConfigProperties {
     this.LOGIN_HOST = properties.getProperty("login_host");
     this.LOGIN_PORT = properties.getInt("login_port");
     this.CFG_SERVER_PATH = properties.getProperty("cfg_server_path");
+    this.HALL_HOST = properties.getProperty("hall_host");
+    this.HALL_PORT = properties.getInt("hall_port");
   }
 
   @Override

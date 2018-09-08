@@ -10,6 +10,8 @@ public class HallToGateMessageGroup extends MessageFactory {
 
   public HallToGateMessageGroup() {
     ImmutableMap.Builder<Integer, Class<? extends Message>> builder = ImmutableMap.builder();
+    builder.put(24, com.funny.blood.modules.base.hall.GetHallResponse.class);
+    builder.put(22, com.funny.blood.modules.base.net.ForwardHallToClientRequest.class);
     messages = builder.build();
   }
 

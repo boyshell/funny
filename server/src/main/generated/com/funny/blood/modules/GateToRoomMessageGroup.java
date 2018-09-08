@@ -10,7 +10,7 @@ public class GateToRoomMessageGroup extends MessageFactory {
 
   public GateToRoomMessageGroup() {
     ImmutableMap.Builder<Integer, Class<? extends Message>> builder = ImmutableMap.builder();
-    builder.put(10, com.funny.blood.modules.base.net.ForwardGateToRoomRequest.class);
+    builder.put(10, com.funny.blood.modules.base.net.ForwardClientToRoomRequest.class);
     messages = builder.build();
   }
 

@@ -10,9 +10,8 @@ public class GateToLoginMessageGroup extends MessageFactory {
 
   public GateToLoginMessageGroup() {
     ImmutableMap.Builder<Integer, Class<? extends Message>> builder = ImmutableMap.builder();
-    builder.put(12, com.funny.blood.modules.base.net.ForwardGateToLoginRequest.class);
     builder.put(16, com.funny.blood.modules.base.net.RemoveClientUserInLoginRequest.class);
-    builder.put(13, com.funny.blood.modules.base.verify.Login0Request.class);
+    builder.put(13, com.funny.blood.modules.base.verify.GetUserIDRequest.class);
     messages = builder.build();
   }
 

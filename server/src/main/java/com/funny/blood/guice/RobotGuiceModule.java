@@ -1,6 +1,6 @@
 package com.funny.blood.guice;
 
-import com.funny.blood.RoomGuiceModule;
+import com.funny.blood.GameGuiceModule;
 import com.funny.blood.cfg.ConfigDataSet;
 import com.funny.blood.cfg.IConfigProperties;
 import com.funny.blood.modules.GateToClientMessageGroup;
@@ -15,7 +15,7 @@ import com.funny.blood.script.RobotScript;
 import com.funny.blood.shutdown.AbstractShutdownHooks;
 import com.funny.blood.shutdown.RobotShutdownHooks;
 
-public class RobotGuiceModule extends RoomGuiceModule {
+public class RobotGuiceModule extends GameGuiceModule {
   @Override
   protected void bind() {
     bindSingleton(AbstractShutdownHooks.class, RobotShutdownHooks.class);

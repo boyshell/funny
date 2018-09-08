@@ -48,7 +48,17 @@ public class GateServer extends WebSocketServer {
     return channels;
   }
 
-  public BiMap<String, Integer> getChannelID2userID() {
-    return channelID2userID;
+  public ClientToGateUser getUser(int userID) {
+    BiMap<Integer, String> inverse = channelID2userID.inverse();
+    String channelID = inverse.get(userID);
+    if (channelID == null) {
+      return null;
+    }
+    return channels.get(channelID);
+  }
+
+  public void bind(ClientToGateUser user, int userID) {
+    user.setUserID(userID);
+    channelID2userID.put(user.getChannel().id().asLongText(), userID);
   }
 }

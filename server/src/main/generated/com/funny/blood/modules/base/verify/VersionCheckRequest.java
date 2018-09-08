@@ -61,6 +61,14 @@ public class VersionCheckRequest implements Message {
   }
 
   @Override
+  public String toString() {
+    return "VersionCheckRequest{" +
+           "messageCodeVersion='" + messageCodeVersion + '\'' +
+           "configCodeVersion='" + configCodeVersion + '\'' +
+           '}';
+  }
+
+  @Override
   public int id() {
     return 4;
   }

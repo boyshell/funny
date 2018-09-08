@@ -4,7 +4,7 @@ import com.funny.blood.cfg.ConfigDataSet;
 import com.funny.blood.modules.MessageVersion;
 import com.funny.blood.modules.base.net.KickType;
 import com.funny.blood.modules.base.net.RemoveClientUserInLoginRequest;
-import com.funny.blood.modules.base.verify.Login0Request;
+import com.funny.blood.modules.base.verify.GetUserIDRequest;
 import com.funny.blood.modules.base.verify.LoginRequest;
 import com.funny.blood.modules.base.verify.VersionCheckError;
 import com.funny.blood.modules.base.verify.VersionCheckRequest;
@@ -80,14 +80,9 @@ public class ClientToGateDispatcherScript implements IDispatcherScript {
     // 登录处理
     if (netUser.getUserID() == Null.ID) {
       if (message instanceof LoginRequest) {
+        logger.info("rcv login msg:{}", message);
         LoginRequest m = (LoginRequest) message;
-        loginClient.write(
-            new Login0Request(
-                channel.id().asLongText(),
-                m.getAccount(),
-                m.getTimestamp(),
-                m.getMd5(),
-                m.getTime()));
+        loginClient.write(new GetUserIDRequest(channel.id().asLongText(), m.getAccount()));
       } else {
         netUser.disconnect(KickType.NOT_VERIFY, "登录未完成");
       }
@@ -100,13 +95,13 @@ public class ClientToGateDispatcherScript implements IDispatcherScript {
         //        break;
       case ROOM:
         if (netUser.getRoomClient() != null) {
-          netUser.getRoomClient().forward(channel.id().asLongText(), message);
+          netUser.getRoomClient().forward(netUser.getUserID(), message);
         } else {
           logger.warn("FORWARD ERROR:{}", message.getClass().getSimpleName());
         }
         break;
       case HALL:
-        hallClient.forward(channel.id().asLongText(), message);
+        hallClient.forward(netUser.getUserID(), message);
         break;
       default:
         netUser.disconnect(KickType.ILLEGAL_MSG, "不应该发送的消息:" + message.toString());

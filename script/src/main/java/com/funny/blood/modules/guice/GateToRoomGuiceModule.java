@@ -6,6 +6,6 @@ import com.google.inject.Singleton;
 public class GateToRoomGuiceModule extends AbstractModule {
   @Override
   protected void configure() {
-    bind(com.funny.blood.modules.base.net.ForwardGateToRoomRequestHandler.class).in(Singleton.class);
+    bind(com.funny.blood.modules.base.net.ForwardClientToRoomRequestHandler.class).in(Singleton.class);
   }
 }

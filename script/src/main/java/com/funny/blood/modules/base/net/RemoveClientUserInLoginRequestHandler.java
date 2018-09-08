@@ -15,7 +15,7 @@ public class RemoveClientUserInLoginRequestHandler
     if (netUser.getClientUsers().remove(message.getChannelID()) == null) {
       logger.error("remove error:{}", message);
     } else {
-      logger.info("add:{}", message);
+      logger.info("remove:{}", message);
     }
   }
 }

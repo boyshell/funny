@@ -24,7 +24,10 @@ public enum ProcessType {
     public Injector createInjector() {
       Injector injector = Guice.createInjector(Stage.PRODUCTION, new GateGuiceModule());
       return injector.createChildInjector(
-          new GateScriptGuiceModule(), new LoginToGateGuiceModule());
+          new GateScriptGuiceModule(),
+          new LoginToGateGuiceModule(),
+          new HallToGateGuiceModule(),
+          new RoomToGateGuiceModule());
     }
   },
   LOGIN("login") {
@@ -45,8 +48,9 @@ public enum ProcessType {
   HALL("hall") {
     @Override
     public Injector createInjector() {
-      Injector injector = Guice.createInjector(Stage.PRODUCTION);
-      return injector.createChildInjector();
+      Injector injector = Guice.createInjector(Stage.PRODUCTION, new HallGuiceModule());
+      return injector.createChildInjector(
+          new HallScriptGuiceModule(), new GateToHallGuiceModule(), new ClientToHallGuiceModule());
     }
   },
   DB("db") {

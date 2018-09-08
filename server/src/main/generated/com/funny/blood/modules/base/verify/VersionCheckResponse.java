@@ -61,6 +61,14 @@ public class VersionCheckResponse implements Message {
   }
 
   @Override
+  public String toString() {
+    return "VersionCheckResponse{" +
+           "config='" + config + '\'' +
+           "configDataVersion='" + configDataVersion + '\'' +
+           '}';
+  }
+
+  @Override
   public int id() {
     return 5;
   }

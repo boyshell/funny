@@ -157,6 +157,20 @@ public class Test1Request implements Message {
   }
 
   @Override
+  public String toString() {
+    return "Test1Request{" +
+           "server='" + server + '\'' +
+           "account='" + account + '\'' +
+           "adult='" + adult + '\'' +
+           "timestamp='" + timestamp + '\'' +
+           "md5='" + md5 + '\'' +
+           "screenWidth='" + screenWidth + '\'' +
+           "screenHeight='" + screenHeight + '\'' +
+           "time='" + time + '\'' +
+           '}';
+  }
+
+  @Override
   public int id() {
     return 7;
   }

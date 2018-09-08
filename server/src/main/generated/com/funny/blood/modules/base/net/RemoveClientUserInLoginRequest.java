@@ -45,6 +45,13 @@ public class RemoveClientUserInLoginRequest implements Message {
   }
 
   @Override
+  public String toString() {
+    return "RemoveClientUserInLoginRequest{" +
+           "channelID='" + channelID + '\'' +
+           '}';
+  }
+
+  @Override
   public int id() {
     return 16;
   }

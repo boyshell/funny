@@ -1,6 +1,5 @@
 package com.funny.blood.net.login;
 
-import com.funny.blood.modules.base.net.ForwardLoginToGateRequest;
 import com.funny.blood.net.CommonChannel;
 import io.netty.channel.Channel;
 import io.netty.util.AttributeKey;
@@ -35,9 +34,5 @@ public class GateToLoginUser extends CommonChannel implements IUser {
 
   public Map<String, ClientToLoginUser> getClientUsers() {
     return clientUsers;
-  }
-
-  public boolean closeAndForward(String channelID, byte[] msg, String because) {
-    return write(new ForwardLoginToGateRequest(channelID, because, msg));
   }
 }
