@@ -15,6 +15,7 @@ public class LoginResponseHandler implements GateToClientHandler<LoginResponse> 
   @Override
   public void exec(RobotUser user, LoginResponse message) {
     logger.info("login suc count:{}", count.incrementAndGet());
+    logger.info("rcv:{}", message);
     NetUtil.close(user.getChannel(), "login suc");
   }
 }

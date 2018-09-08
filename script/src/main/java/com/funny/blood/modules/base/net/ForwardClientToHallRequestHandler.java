@@ -5,14 +5,11 @@ import com.funny.blood.modules.base.user.hall.UserInHallModule;
 import com.funny.blood.modules.handler.ClientToHallHandler;
 import com.funny.blood.modules.handler.GateToHallHandler;
 import com.funny.blood.modules.hg.ClientToHallHandlerGroup;
-import com.funny.blood.modules.user.hall.UserInHall;
 import com.google.inject.Inject;
 import io.netty.channel.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import shell.net.Message;
-
-import java.util.function.Consumer;
 
 public class ForwardClientToHallRequestHandler
     implements GateToHallHandler<ForwardClientToHallRequest> {

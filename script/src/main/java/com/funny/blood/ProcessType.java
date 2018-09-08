@@ -7,7 +7,7 @@ import com.google.inject.Injector;
 import com.google.inject.Stage;
 
 public enum ProcessType {
-  ROBOT("robot") {
+  ROBOT {
     @Override
     public Injector createInjector() {
       Injector injector = Guice.createInjector(Stage.PRODUCTION, new RobotGuiceModule());
@@ -19,7 +19,7 @@ public enum ProcessType {
           new HallToClientGuiceModule());
     }
   },
-  GATE("gate") {
+  GATE {
     @Override
     public Injector createInjector() {
       Injector injector = Guice.createInjector(Stage.PRODUCTION, new GateGuiceModule());
@@ -30,7 +30,7 @@ public enum ProcessType {
           new RoomToGateGuiceModule());
     }
   },
-  LOGIN("login") {
+  LOGIN {
     @Override
     public Injector createInjector() {
       Injector injector = Guice.createInjector(Stage.PRODUCTION, new LoginGuiceModule());
@@ -38,22 +38,25 @@ public enum ProcessType {
           new LoginScriptGuiceModule(), new GateToLoginGuiceModule());
     }
   },
-  GAME("game") {
+  ROOM {
     @Override
     public Injector createInjector() {
-      Injector injector = Guice.createInjector(Stage.PRODUCTION);
-      return injector.createChildInjector();
+      Injector injector = Guice.createInjector(Stage.PRODUCTION, new RoomGuiceModule());
+      return injector.createChildInjector(new RoomScriptGuiceModule(), new GateToRoomGuiceModule());
     }
   },
-  HALL("hall") {
+  HALL {
     @Override
     public Injector createInjector() {
       Injector injector = Guice.createInjector(Stage.PRODUCTION, new HallGuiceModule());
       return injector.createChildInjector(
-          new HallScriptGuiceModule(), new GateToHallGuiceModule(), new ClientToHallGuiceModule());
+          new HallScriptGuiceModule(),
+          new GateToHallGuiceModule(),
+          new ClientToHallGuiceModule(),
+          new RoomToHallGuiceModule());
     }
   },
-  DB("db") {
+  DB {
     @Override
     public Injector createInjector() {
       Injector injector = Guice.createInjector(Stage.PRODUCTION);
@@ -61,11 +64,6 @@ public enum ProcessType {
     }
   },
   ;
-  public final String key;
-
-  ProcessType(String key) {
-    this.key = key;
-  }
 
   public abstract Injector createInjector();
 }

@@ -23,3 +23,4 @@
 23,com.funny.blood.modules.base.hall.GetHall$Request
 24,com.funny.blood.modules.base.hall.GetHall$Response
 25,com.funny.blood.modules.base.verify.GetUserID$Error
+26,com.funny.blood.modules.base.room.RegisterRoomToHall$Request

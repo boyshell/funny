@@ -42,4 +42,8 @@ public class CommonChannel {
     NetUtil.closeAndWrite(channel, message, because);
     return true;
   }
+
+  public void close(String because) {
+    NetUtil.close(channel, because);
+  }
 }

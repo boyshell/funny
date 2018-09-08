@@ -11,10 +11,13 @@ public class GateAndRoomToHallDispatcherScript implements IDispatcherScript {
   private static final Logger logger =
       LoggerFactory.getLogger(GateAndRoomToHallDispatcherScript.class);
   private final GateAndRoomToHallHandlerGroup handlerGroup;
+  private final HallServer hallServer;
 
   @Inject
-  public GateAndRoomToHallDispatcherScript(GateAndRoomToHallHandlerGroup handlerGroup) {
+  public GateAndRoomToHallDispatcherScript(
+      GateAndRoomToHallHandlerGroup handlerGroup, HallServer hallServer) {
     this.handlerGroup = handlerGroup;
+    this.hallServer = hallServer;
   }
 
   @Override
@@ -24,7 +27,12 @@ public class GateAndRoomToHallDispatcherScript implements IDispatcherScript {
   public void onChannelActive(Channel channel) {}
 
   @Override
-  public void onChannelInactive(Channel channel) {}
+  public void onChannelInactive(Channel channel) {
+    RoomToHallUser roomToHallUser = channel.attr(RoomToHallUser.KEY).getAndRemove();
+    if (roomToHallUser != null) {
+      hallServer.getRooms().remove(roomToHallUser.getType(), roomToHallUser.getId());
+    }
+  }
 
   @Override
   public void onChannelRead(Channel channel, Message message) {

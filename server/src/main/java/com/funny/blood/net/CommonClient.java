@@ -7,9 +7,13 @@ import shell.net.*;
 
 import java.util.concurrent.ThreadFactory;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 public class CommonClient extends TcpClient {
   private static final Logger logger = LoggerFactory.getLogger(CommonClient.class);
 
+  private final String host;
+  private final int port;
   private volatile CommonChannel channel;
 
   public CommonClient(
@@ -24,7 +28,8 @@ public class CommonClient extends TcpClient {
       throws Exception {
     super(name, workerNum, messageHandler, threadFactory, decoderFactory, encoderFactory);
 
-    channel = new CommonChannel(connect(host, port));
+    this.host = host;
+    this.port = port;
   }
 
   public boolean write(Message message) {
@@ -36,5 +41,10 @@ public class CommonClient extends TcpClient {
       return false;
     }
     return channel.write(message);
+  }
+
+  public void startup() throws Exception {
+    checkArgument(channel == null);
+    channel = new CommonChannel(connect(host, port));
   }
 }

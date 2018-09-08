@@ -20,6 +20,7 @@ public class UserInHallModule extends UserModule {
 
   // todo 做成lru cache
   public void exec(int userID, Consumer<UserInHall> action) {
+    // todo 需要选择线程
     UserInHall user = dataSet.getUsers().get(userID);
     if (user == null) {
       UserInHall newUser = new UserInHall(userID);

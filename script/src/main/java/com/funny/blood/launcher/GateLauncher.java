@@ -1,10 +1,7 @@
 package com.funny.blood.launcher;
 
 import com.funny.blood.ILauncher;
-import com.funny.blood.net.gate.ClientToGateDispatcherScript;
-import com.funny.blood.net.gate.GateServer;
-import com.funny.blood.net.gate.HallToGateDispatcherScript;
-import com.funny.blood.net.gate.LoginToGateDispatcherScript;
+import com.funny.blood.net.gate.*;
 import com.funny.blood.script.GateScript;
 import com.google.inject.Inject;
 
@@ -14,6 +11,8 @@ public class GateLauncher implements ILauncher {
   private final ClientToGateDispatcherScript clientToGateDispatcherScript;
   private final LoginToGateDispatcherScript loginToGateDispatcherScript;
   private final HallToGateDispatcherScript hallToGateDispatcherScript;
+  private final HallClient hallClient;
+  private final LoginClient loginClient;
 
   @Inject
   public GateLauncher(
@@ -21,17 +20,23 @@ public class GateLauncher implements ILauncher {
       GateScript gateScript,
       ClientToGateDispatcherScript clientToGateDispatcherScript,
       LoginToGateDispatcherScript loginToGateDispatcherScript,
-      HallToGateDispatcherScript hallToGateDispatcherScript) {
+      HallToGateDispatcherScript hallToGateDispatcherScript,
+      HallClient hallClient,
+      LoginClient loginClient) {
     this.gateServer = gateServer;
     this.gateScript = gateScript;
     this.clientToGateDispatcherScript = clientToGateDispatcherScript;
     this.loginToGateDispatcherScript = loginToGateDispatcherScript;
     this.hallToGateDispatcherScript = hallToGateDispatcherScript;
+    this.hallClient = hallClient;
+    this.loginClient = loginClient;
   }
 
   @Override
   public void launch() throws Exception {
     gateServer.startup();
+    hallClient.startup();
+    loginClient.startup();
   }
 
   @Override

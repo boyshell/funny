@@ -1,9 +1,6 @@
 package com.funny.blood.net.gate;
 
 import com.funny.blood.properties.GateProperties;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.google.common.collect.Maps;
 import com.google.inject.Inject;
 import io.netty.channel.Channel;
 import shell.net.BinaryWebSocketFrameToMessageHandler;
@@ -19,8 +16,9 @@ public class GateServer extends WebSocketServer {
   private final ClientToGateDispatcher dispatcher;
 
   private final Map<String, ClientToGateUser> channels = new ConcurrentHashMap<>();
-  private final BiMap<String, Integer> channelID2userID =
-      Maps.synchronizedBiMap(HashBiMap.create());
+  //  private final BiMap<String, Integer> channelID2userID =
+  //      Maps.synchronizedBiMap(HashBiMap.create());
+  private final Map<Integer, String> userID2channelID = new ConcurrentHashMap<>();
 
   @Inject
   public GateServer(
@@ -49,8 +47,7 @@ public class GateServer extends WebSocketServer {
   }
 
   public ClientToGateUser getUser(int userID) {
-    BiMap<Integer, String> inverse = channelID2userID.inverse();
-    String channelID = inverse.get(userID);
+    String channelID = userID2channelID.get(userID);
     if (channelID == null) {
       return null;
     }
@@ -59,6 +56,6 @@ public class GateServer extends WebSocketServer {
 
   public void bind(ClientToGateUser user, int userID) {
     user.setUserID(userID);
-    channelID2userID.put(user.getChannel().id().asLongText(), userID);
+    userID2channelID.put(userID, user.getChannel().id().asLongText());
   }
 }

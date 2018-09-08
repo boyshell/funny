@@ -1,5 +1,6 @@
 package com.funny.blood.modules.base.hall;
 
+import com.funny.blood.modules.base.room.GameBean;
 import shell.tool.message.BeanClassAnnotation;
 import shell.tool.message.MessageFieldAnnotation;
 
@@ -12,4 +13,7 @@ public class HallBean {
 
   @MessageFieldAnnotation(desc = "值(参见UpdateValue)")
   List<Integer> values;
+
+  @MessageFieldAnnotation(desc = "游戏列表")
+  List<GameBean> games;
 }

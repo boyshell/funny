@@ -1,6 +1,10 @@
 package com.funny.blood.net.hall;
 
+import com.funny.blood.modules.base.room.GameType;
 import com.funny.blood.properties.HallProperties;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+import com.google.common.collect.Tables;
 import com.google.inject.Inject;
 import io.netty.channel.Channel;
 import shell.net.ByteToMessageHandler;
@@ -11,6 +15,8 @@ import java.util.function.Consumer;
 
 public class HallServer extends TcpServer {
   private final HallDispatcher dispatcher;
+  private final Table<GameType, Integer, RoomToHallUser> rooms =
+      Tables.synchronizedTable(HashBasedTable.create());
 
   @Inject
   public HallServer(
@@ -30,5 +36,9 @@ public class HallServer extends TcpServer {
   @Override
   protected void foreachLocalChannel(Consumer<Channel> consumer) {
     dispatcher.foreachChannel(consumer);
+  }
+
+  public Table<GameType, Integer, RoomToHallUser> getRooms() {
+    return rooms;
   }
 }
