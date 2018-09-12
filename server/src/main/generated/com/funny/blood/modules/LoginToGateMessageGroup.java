@@ -10,7 +10,7 @@ public class LoginToGateMessageGroup extends MessageFactory {
 
   public LoginToGateMessageGroup() {
     ImmutableMap.Builder<Integer, Class<? extends Message>> builder = ImmutableMap.builder();
-    builder.put(17, com.funny.blood.modules.base.verify.GetUserIDResponse.class);
+    builder.put(17, com.funny.blood.modules.base.login.GetUserIDResponse.class);
     messages = builder.build();
   }
 

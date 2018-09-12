@@ -1,7 +1,7 @@
 package com.funny.blood.modules.poker.ddz;
 
 import com.funny.blood.modules.handler.RoomToClientHandler;
-import com.funny.blood.net.robot.RobotUser;
+import com.funny.blood.server.robot.net.RobotUser;
 
 public class Test1RequestHandler implements RoomToClientHandler<Test1Request> {
   @Override

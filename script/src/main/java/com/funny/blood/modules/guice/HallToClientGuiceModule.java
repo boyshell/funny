@@ -6,6 +6,8 @@ import com.google.inject.Singleton;
 public class HallToClientGuiceModule extends AbstractModule {
   @Override
   protected void configure() {
-    bind(com.funny.blood.modules.base.hall.UpdateValueRequestHandler.class).in(Singleton.class);
+    bind(com.funny.blood.modules.base.login.UpdateValueRequestHandler.class).in(Singleton.class);
+    bind(com.funny.blood.modules.base.room.EnterRoomResponseHandler.class).in(Singleton.class);
+    bind(com.funny.blood.modules.base.room.EnterRoomErrorHandler.class).in(Singleton.class);
   }
 }

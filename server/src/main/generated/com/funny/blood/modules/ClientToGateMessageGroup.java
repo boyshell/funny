@@ -10,8 +10,8 @@ public class ClientToGateMessageGroup extends MessageFactory {
 
   public ClientToGateMessageGroup() {
     ImmutableMap.Builder<Integer, Class<? extends Message>> builder = ImmutableMap.builder();
-    builder.put(1, com.funny.blood.modules.base.verify.LoginRequest.class);
-    builder.put(4, com.funny.blood.modules.base.verify.VersionCheckRequest.class);
+    builder.put(1, com.funny.blood.modules.base.login.LoginRequest.class);
+    builder.put(4, com.funny.blood.modules.base.login.VersionCheckRequest.class);
     messages = builder.build();
   }
 

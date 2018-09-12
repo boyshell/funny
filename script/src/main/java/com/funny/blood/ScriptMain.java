@@ -1,6 +1,5 @@
 package com.funny.blood;
 
-import com.funny.blood.shutdown.AbstractShutdownHooks;
 import com.google.inject.Injector;
 
 public class ScriptMain extends Main {

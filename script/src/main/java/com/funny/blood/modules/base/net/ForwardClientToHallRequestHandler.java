@@ -1,10 +1,12 @@
 package com.funny.blood.modules.base.net;
 
 import com.funny.blood.modules.ClientToHallMessageGroup;
-import com.funny.blood.modules.base.user.hall.UserInHallModule;
 import com.funny.blood.modules.handler.ClientToHallHandler;
 import com.funny.blood.modules.handler.GateToHallHandler;
 import com.funny.blood.modules.hg.ClientToHallHandlerGroup;
+import com.funny.blood.modules.user.hall.UserInHall;
+import com.funny.blood.server.hall.UserInHallModule;
+import com.funny.blood.server.hall.worker.UserInHallTask;
 import com.google.inject.Inject;
 import io.netty.channel.Channel;
 import org.slf4j.Logger;
@@ -41,6 +43,14 @@ public class ForwardClientToHallRequestHandler
       logger.error("handler is null:{}", message, new NullPointerException());
       return;
     }
-    userInHallModule.exec(message.getUserID(), userInHall -> handler.exec(userInHall, decode));
+    // todo 可优化，产生尽可能少的对象
+    userInHallModule.exec(
+        message.getUserID(),
+        new UserInHallTask("ForwardClientToHallRequestHandler.exec") {
+          @Override
+          public void exec0(UserInHall user) {
+            handler.exec(user, decode);
+          }
+        });
   }
 }

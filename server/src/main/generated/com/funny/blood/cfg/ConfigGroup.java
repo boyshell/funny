@@ -1,11 +1,12 @@
 package com.funny.blood.cfg;
 
-import com.funny.blood.modules.base.verify.VersionCheckResponse;
-import shell.net.Message;
+import com.funny.blood.modules.base.login.VersionCheckResponse;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import shell.io.IOUtil;
+import shell.net.Message;
 import shell.nio.ByteBufUtil;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -24,11 +25,13 @@ public class ConfigGroup {
       ByteBufUtil.writeBytes(buf, bytes, 0, bytes.length);
 
       checkArgument(CODE_VERSION.equals(ByteBufUtil.readString(buf)), "配置文件和程序版本不一致");
-      this.DATA_VERSION = Message.encodeToBytes(new VersionCheckResponse().setConfigDataVersion(ByteBufUtil.readInt(buf)));
+      this.DATA_VERSION =
+          Message.encodeToBytes(
+              new VersionCheckResponse().setConfigDataVersion(ByteBufUtil.readInt(buf)));
 
       try {
         this.q_zjh_paramGroup = new Q_zjh_paramGroup(buf);
-      } catch(Throwable e) {
+      } catch (Throwable e) {
         throw new shell.game.misc.ConfigFileException(e.getMessage(), "扎金花-参数", e);
       }
     } finally {
@@ -39,7 +42,7 @@ public class ConfigGroup {
   public void check() {
     try {
       this.q_zjh_paramGroup.check(this);
-    } catch(Throwable e) {
+    } catch (Throwable e) {
       throw new shell.game.misc.ConfigFileException(e.getMessage(), "扎金花-参数", e);
     }
   }

@@ -1,8 +1,8 @@
 package com.funny.blood.modules.base.room;
 
 import com.funny.blood.modules.handler.RoomToHallHandler;
-import com.funny.blood.net.hall.HallServer;
-import com.funny.blood.net.hall.RoomToHallUser;
+import com.funny.blood.server.hall.net.HallServer;
+import com.funny.blood.server.hall.net.RoomToHallUser;
 import com.google.inject.Inject;
 import io.netty.channel.Channel;
 import org.slf4j.Logger;

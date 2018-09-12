@@ -1,6 +1,6 @@
 package com.funny.blood.modules.user.login;
 
-import com.funny.blood.net.login.ClientToLoginUser;
+import com.funny.blood.server.login.net.ClientToLoginUser;
 import shell.util.concurrent.Door;
 
 public class UserInLogin extends Door<ClientToLoginUser> {

@@ -10,11 +10,11 @@ public class GateToClientHandlerGroup {
   @Inject
   public GateToClientHandlerGroup(Injector injector) {
     ImmutableMap.Builder<Integer, com.funny.blood.modules.handler.GateToClientHandler> builder = ImmutableMap.builder();
+    builder.put(2, injector.getInstance(com.funny.blood.modules.base.login.LoginResponseHandler.class));
+    builder.put(3, injector.getInstance(com.funny.blood.modules.base.login.LoginErrorHandler.class));
+    builder.put(5, injector.getInstance(com.funny.blood.modules.base.login.VersionCheckResponseHandler.class));
+    builder.put(6, injector.getInstance(com.funny.blood.modules.base.login.VersionCheckErrorHandler.class));
     builder.put(9, injector.getInstance(com.funny.blood.modules.base.net.KickRequestHandler.class));
-    builder.put(2, injector.getInstance(com.funny.blood.modules.base.verify.LoginResponseHandler.class));
-    builder.put(3, injector.getInstance(com.funny.blood.modules.base.verify.LoginErrorHandler.class));
-    builder.put(5, injector.getInstance(com.funny.blood.modules.base.verify.VersionCheckResponseHandler.class));
-    builder.put(6, injector.getInstance(com.funny.blood.modules.base.verify.VersionCheckErrorHandler.class));
     this.handlers = builder.build();
   }
 

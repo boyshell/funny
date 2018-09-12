@@ -6,7 +6,7 @@ import com.google.inject.Singleton;
 public class GateToHallGuiceModule extends AbstractModule {
   @Override
   protected void configure() {
-    bind(com.funny.blood.modules.base.hall.GetHallRequestHandler.class).in(Singleton.class);
+    bind(com.funny.blood.modules.base.login.GetHallRequestHandler.class).in(Singleton.class);
     bind(com.funny.blood.modules.base.net.ForwardClientToHallRequestHandler.class).in(Singleton.class);
   }
 }

@@ -10,6 +10,7 @@ public class HallToRoomHandlerGroup {
   @Inject
   public HallToRoomHandlerGroup(Injector injector) {
     ImmutableMap.Builder<Integer, com.funny.blood.modules.handler.HallToRoomHandler> builder = ImmutableMap.builder();
+    builder.put(30, injector.getInstance(com.funny.blood.modules.base.room.AddUserRequestHandler.class));
     this.handlers = builder.build();
   }
 

@@ -10,6 +10,7 @@ public class ClientToHallMessageGroup extends MessageFactory {
 
   public ClientToHallMessageGroup() {
     ImmutableMap.Builder<Integer, Class<? extends Message>> builder = ImmutableMap.builder();
+    builder.put(27, com.funny.blood.modules.base.room.EnterRoomRequest.class);
     messages = builder.build();
   }
 

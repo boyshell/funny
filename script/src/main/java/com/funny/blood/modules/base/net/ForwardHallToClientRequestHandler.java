@@ -1,8 +1,8 @@
 package com.funny.blood.modules.base.net;
 
 import com.funny.blood.modules.handler.HallToGateHandler;
-import com.funny.blood.net.gate.ClientToGateUser;
-import com.funny.blood.net.gate.GateServer;
+import com.funny.blood.server.gate.net.ClientToGateUser;
+import com.funny.blood.server.gate.net.GateServer;
 import com.google.inject.Inject;
 import io.netty.channel.Channel;
 import org.slf4j.Logger;

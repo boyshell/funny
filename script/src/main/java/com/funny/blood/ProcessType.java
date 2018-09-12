@@ -1,7 +1,16 @@
 package com.funny.blood;
 
-import com.funny.blood.guice.*;
 import com.funny.blood.modules.guice.*;
+import com.funny.blood.server.gate.GateGuiceModule;
+import com.funny.blood.server.gate.GateScriptGuiceModule;
+import com.funny.blood.server.hall.HallGuiceModule;
+import com.funny.blood.server.hall.HallScriptGuiceModule;
+import com.funny.blood.server.login.LoginGuiceModule;
+import com.funny.blood.server.login.LoginScriptGuiceModule;
+import com.funny.blood.server.robot.RobotGuiceModule;
+import com.funny.blood.server.robot.RobotScriptGuiceModule;
+import com.funny.blood.server.room.RoomGuiceModule;
+import com.funny.blood.server.room.RoomScriptGuiceModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Stage;

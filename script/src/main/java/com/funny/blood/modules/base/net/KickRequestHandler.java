@@ -1,7 +1,7 @@
 package com.funny.blood.modules.base.net;
 
 import com.funny.blood.modules.handler.GateToClientHandler;
-import com.funny.blood.net.robot.RobotUser;
+import com.funny.blood.server.robot.net.RobotUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

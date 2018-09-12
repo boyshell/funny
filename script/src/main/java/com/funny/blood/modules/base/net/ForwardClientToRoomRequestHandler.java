@@ -1,10 +1,12 @@
 package com.funny.blood.modules.base.net;
 
 import com.funny.blood.modules.ClientToRoomMessageGroup;
-import com.funny.blood.modules.base.user.room.UserInRoomModule;
 import com.funny.blood.modules.handler.ClientToRoomHandler;
 import com.funny.blood.modules.handler.GateToRoomHandler;
 import com.funny.blood.modules.hg.ClientToRoomHandlerGroup;
+import com.funny.blood.modules.user.room.UserInRoom;
+import com.funny.blood.server.room.UserInRoomModule;
+import com.funny.blood.server.room.worker.UserInRoomTask;
 import com.google.inject.Inject;
 import io.netty.channel.Channel;
 import org.slf4j.Logger;
@@ -41,6 +43,13 @@ public class ForwardClientToRoomRequestHandler
       logger.error("handler is null:{}", decode);
       return;
     }
-    userInRoomModule.exec(message.getUserID(), user -> handler.exec(user, decode));
+    userInRoomModule.exec(
+        message.getUserID(),
+        new UserInRoomTask("ForwardClientToRoomRequestHandler.exec") {
+          @Override
+          public void exec(UserInRoom user) {
+            handler.exec(user, decode);
+          }
+        });
   }
 }
